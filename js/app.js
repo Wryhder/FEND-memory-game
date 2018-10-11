@@ -4,7 +4,7 @@ const deck = document.querySelector('.deck'),
     modalCloseButton = document.querySelector('.modal-close'),
     modalCancelButton = document.querySelector('.cancel'),
     modalReplayButton = document.querySelector('.replay'),
-    totalCardPairs = 3;
+    totalCardPairs = 18;
 
 let openCards = [],
     moves = 0,
