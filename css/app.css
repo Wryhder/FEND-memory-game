@@ -163,7 +163,6 @@ h1:first-of-type {
     justify-content: space-between;
     align-items: center;
     padding: 0 1.5rem;
-    border-bottom: 1px solid gray;
 }
 
 .modal-content .modal-close {
@@ -177,7 +176,6 @@ h1:first-of-type {
     flex-direction: column;
     align-items: center;
     padding: 1rem;
-    border-bottom: 1px solid gray;
 }
 
 .buttons {
