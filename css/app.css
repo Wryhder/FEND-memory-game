@@ -1,0 +1,210 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Coda', cursive;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+h1:first-of-type {
+    background: #1e3140;
+    color: whitesmoke;
+    padding: 5px;
+}
+
+/*
+ * Styles for the deck of cards
+ */
+
+.deck {
+    width: 660px;
+    min-height: 680px;
+    background: linear-gradient(160deg, #16b329 0%, rgb(245, 102, 7) 100%);
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
+}
+
+.deck .card {
+    height: 90px;
+    width: 90px;
+    background: #b5c3ce;
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 35%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+.deck .card.open {
+    transform: rotateY(0);
+    background: #1e3140;
+    cursor: default;
+}
+
+.deck .card.show {
+    font-size: 33px;
+}
+
+.deck .card.match {
+    cursor: default;
+    background: peru;
+    font-size: 33px;
+}
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+    display: flex;
+    width: 345px;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    margin-top: 1em;
+}
+
+.score-panel .game-stats {
+    display: flex;
+    flex-direction: column;
+}
+
+.score-panel .gems {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
+.score-panel .gem {
+    color: dodgerblue;
+}
+
+.score-panel .gems li {
+    list-style: none;
+    display: inline-block;
+}
+
+.score-panel .gems li.hidden {
+    display: none;
+}
+
+.score-panel .reset {
+    cursor: pointer;
+    margin-top: 15px;
+    
+}
+
+.reset i {
+    font-size: 2em;
+    color: black;
+    padding: 7px;
+    border-radius: 50%;
+    background: rgb(245, 102, 7);
+}
+
+.game-completion-modal {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.438);
+}
+
+.hidden {
+    display: none;
+}
+
+.modal-content {
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    background: #ffffff;
+    position: relative;
+    transform: translate(-50%, -65%);
+}
+
+.modal-content header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    border-bottom: 1px solid gray;
+}
+
+.modal-content .modal-close {
+    font-weight: bold;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.modal-content .stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid gray;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+}
+
+.button {
+    width: 60px;
+    height: 30px;
+}
+
+@media screen and (max-width: 680px) {
+    .deck {
+        width: 100%;
+    }
+
+    .deck .card {
+        margin-bottom: 7px;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .score-panel {
+        width: 100%;
+        padding: 0 5px;
+    }
+}
+
