@@ -31,3 +31,9 @@ Click the reset button to reset the game at any time.
 Students from the program may use this repo's code to get an idea of how to approach their own project. Please do NOT copy/paste.
 
 Otherwise, fork and modify as you please.
+
+## Todo
+- Add animation effects to matched and unmatched cards
+- Save game state using local storage
+- Optimize game
+- Make game accessible (keyboard shortcuts, ...)
