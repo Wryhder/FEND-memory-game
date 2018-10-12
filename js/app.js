@@ -1,3 +1,5 @@
+"use strict"
+
 const deck = document.querySelector('.deck'),
     cards = document.querySelectorAll('.deck li'),
     resetButton = document.querySelector('.fa-redo'),
