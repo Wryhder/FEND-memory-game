@@ -233,7 +233,6 @@ const chores = {
 
             // Resets the number of gems when game is over or reset
             (function resetGems() {
-                gems = 0;
 
                 // When modal is toggled on, keep showing gems left
                 // in background score panel until replay button is clicked
