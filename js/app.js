@@ -7,6 +7,8 @@ const deck = document.querySelector('.deck'),
     modalCloseButton = document.querySelector('.modal-close'),
     modalCancelButton = document.querySelector('.cancel'),
     modalReplayButton = document.querySelector('.replay'),
+    gemsDisplay = document.querySelector('.lives'),
+    gemsStatsonGameBoard = document.querySelector('.match-modal-format'),
     totalCardPairs = 18;
 
 let openCards = [],
