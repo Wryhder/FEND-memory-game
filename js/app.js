@@ -50,7 +50,7 @@ const chores = {
         })(allCardsOnDeck);
 
         // Shuffled cards are appended to the main deck
-        for (card of shuffledCards) {
+        for (let card of shuffledCards) {
             deck.appendChild(card);
         }
     },
@@ -222,7 +222,7 @@ const chores = {
             gemsLeft = (function getGemsLeft() {
                 let gemCount = 0;
 
-                for (gem of gemList) {
+                for (let gem of gemList) {
                     if (!gem.classList.contains('.hidden')) {
                         gemCount++;
                     }
@@ -242,7 +242,7 @@ const chores = {
                 if (event.target === modalReplayButton ||
                     event.target === resetButton) {
 
-                    for (gem of gemList) {
+                    for (const gem of gemList) {
                         if (gem.classList.contains('hidden')) {
                             gem.classList.toggle('hidden');
                         }
@@ -352,7 +352,7 @@ const chores = {
 
         // remove all classes from cards and leave just the "card" class
         (function resetCards() {
-            for (card of cards) {
+            for (let card of cards) {
                 card.className = 'card';
             }
         })();
