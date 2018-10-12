@@ -1,5 +1,6 @@
 "use strict"
 
+// Global variables
 const deck = document.querySelector('.deck'),
     cards = document.querySelectorAll('.deck li'),
     resetButton = document.querySelector('.fa-redo'),
@@ -19,11 +20,19 @@ let openCards = [],
     totalMoves = 0,
     gemsLeft = 0;
  
+
+// Object `chores` contain all handler functions for the game
 const chores = {
 
+    // shuffles card deck
     shuffleDeck() {
+        // Global cards variable contains a nodeList;
+        // it need to be converted to an array before it is looped over
+        // This is what the Array.from() function achieves.
         const allCardsOnDeck = Array.from(cards);
 
+        // The IIFE (Immediately Invoked Function Expression), `shuffle`,
+        // performs the actual card shuffling and returns shuffled cards
         const shuffledCards = (function shuffle(array) {
             let currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -38,11 +47,13 @@ const chores = {
             return array;
         })(allCardsOnDeck);
 
+        // Shuffled cards are appended to the main deck
         for (card of shuffledCards) {
             deck.appendChild(card);
         }
     },
 
+    // Set up event listeners
     setUpListeners() {
         deck.addEventListener('click', this.manageGamePlay.bind(chores));
 
@@ -58,18 +69,25 @@ const chores = {
     manageGamePlay() {
         const clickTarget = event.target;
 
+        // if a click is valid and it is the first of such, start the timer
         if (this.checkClickValidity(clickTarget)) {
             if (timerOff) {
                 this.handleTimer();
                 timerOff = false;
             }
 
+            // if a click is valid and it is NOT the first of such,
+            // turn its target (the card) face up
             this.toggleClass(clickTarget);
+            // add card to the openCards array
             this.addToArray(clickTarget);
 
+            // only accept two cards max in openCards array
             if (openCards.length === 2) {
                 this.checkForMatch();
                 
+                // Whether or not cards match, increase the moves counter
+                // and check if a gem should be removed
                 if (!isGameOver) {
                     this.handleMoves();
                     this.handleScoring();
@@ -79,6 +97,11 @@ const chores = {
     },
 
     checkClickValidity(clickTarget) {
+        // For a click to be valid:
+        // 1. Target needs to be a card with class of "card"
+        // 2. Target must not have been previously matched
+        // 3. 
+        // 4. Target must not already be in the openCards array
         return (
             clickTarget.classList.contains('card') &&
             !clickTarget.classList.contains('match') &&
@@ -87,19 +110,24 @@ const chores = {
         );
     },
 
+    // open or close a card
     toggleClass(card) {
         card.classList.toggle('open');
         card.classList.toggle('show');
     },
 
+    // add a card to the openCards array
     addToArray(card) {
         openCards.push(card);
     },
 
+    // empty the openCards array
     emptyArray() {
         openCards = [];
     },
 
+    // checks if two cards match, that is, share the same symbols or classList
+    // if they do leave 'em open, else turn them over
     checkForMatch() {
         if (openCards[0].firstElementChild.className ===
             openCards[1].firstElementChild.className) {
@@ -112,6 +140,9 @@ const chores = {
                     isGameOver = true;
                     matchedCards = 0;
 
+                    // these calls here stop the counters on the score panel
+                    // once all cards are matched
+                    // as well as toggle the game completion modal on
                     chores.handleTimer();
                     chores.handleMoves();
                     chores.handleScoring();
@@ -119,6 +150,8 @@ const chores = {
                 })();
             }
         } else {
+            // turns unmatched cards back down
+            // but not before player can see they were not a match
             setTimeout(() => {
                 this.closeUnmatchedCards();
                 this.emptyArray();
@@ -127,16 +160,21 @@ const chores = {
     },
 
     leaveMatchedCardsOpen() {
+        // the "match" class keeps the matched cards open
         openCards[0].classList.toggle('match');
         openCards[1].classList.toggle('match');
     },
 
+    // turn unmatched cards back down
     closeUnmatchedCards() {
         this.toggleClass(openCards[0]);
         this.toggleClass(openCards[1]);
     },
 
     handleMoves() {
+        // Each time two cards are opened, the moves
+        // variable is increased by one and displayed
+        // on the score panel
         moves++;
         movesElement = document.querySelector('.moves');
         movesElement.innerHTML = `Moves: ${moves}`;
@@ -144,6 +182,7 @@ const chores = {
         if (isGameOver === true) {
             totalMoves = moves;
 
+            // Resets the number of moves when game is over or reset
             (function resetMoves() {
                 moves = 0;
 
@@ -163,6 +202,7 @@ const chores = {
     handleScoring() {
         const gemList = document.querySelectorAll('.gems li');
 
+        // Checks when a gem should be removed
         if (moves === 14 || moves === 20 || moves === 30) {
             (function hideGem() {
                 for (gem of gemList) {
@@ -176,6 +216,7 @@ const chores = {
 
         if (isGameOver === true) {
 
+            // Get the number of gems left
             gemsLeft = (function getGemsLeft() {
                 let gemCount = 0;
 
@@ -188,6 +229,7 @@ const chores = {
                 return gemCount;
             })();
 
+            // Resets the number of gems when game is over or reset
             (function resetGems() {
                 gems = 0;
 
@@ -206,15 +248,14 @@ const chores = {
                 }
             })();
 
-        } else {
-
-            
         }
     },
 
     handleTimer() {
         const timer = document.querySelector('.timer');
 
+        // Stops the timer when game is over or reset
+        // and resets the all elements concerned with time 
         if (isGameOver === true) {
             (function stopTimer() {
                 clearInterval(timerId);
@@ -236,6 +277,8 @@ const chores = {
             }
 
         } else {
+            // Start the timer and make sure the time displayed
+            // on the score panel stays recent
             (function startTimer() {
                 timerId = setInterval(() => {
                     time++;
@@ -259,9 +302,12 @@ const chores = {
     toggleModal() {
         const modal = document.querySelector('.game-completion-modal');
 
+        // if modal was hidden at the time the `toggleModal` method was called
+        // then that means the game has just ended
         if (modal.classList.contains('hidden')) {
             isGameOver = true;
 
+            // write all game stats to the modal HTML element
             (function writeModalStats() {
                 const timeStat = document.querySelector('.total-time');
                 const movesStat = document.querySelector('.number-of-moves');
@@ -273,6 +319,7 @@ const chores = {
             })();
         }
 
+        // show/hide the modal
         modal.classList.toggle('hidden');
     },
 
@@ -284,17 +331,24 @@ const chores = {
             isGameOver = true;
         }
 
+        // these reset the counters on the score panel
         this.handleTimer();
         this.handleMoves();
         this.handleScoring();
         
+        // only show the modal if the modalReplayButton,
+        // and not the resetButton, was clicked
         if (event.target.tagName === 'BUTTON') {
             this.toggleModal();
         }
 
+        // shuffle the deck
         this.shuffleDeck();
+
+        // reset variable
         isGameOver = false;
 
+        // remove all classes from cards and leave just the "card" class
         (function resetCards() {
             for (card of cards) {
                 card.className = 'card';
@@ -303,6 +357,7 @@ const chores = {
     },
 }
 
+// on each new page load, shuffle the deck, set up appropriate listeners
 chores.shuffleDeck();
 chores.setUpListeners();
 
