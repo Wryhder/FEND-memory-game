@@ -231,6 +231,15 @@ const chores = {
                 return gemCount;
             })();
 
+            // hide gemsDisplay element
+            // and show the gemsStatsonGameBoard element
+            // What this actually does is unhide the html element
+            // which shows the final rating (or gems left)
+            // in the same format as the game completion modal
+            gemsStatsonGameBoard.innerHTML = `Gems: ${gemsLeft}`;
+            gemsDisplay.classList.toggle('hidden');
+            gemsStatsonGameBoard.classList.toggle('hidden');
+
             // Resets the number of gems when game is over or reset
             (function resetGems() {
 
@@ -330,6 +339,17 @@ const chores = {
         // even though the game has not begun
         if (event.target === resetButton) {
             isGameOver = true;
+        }
+
+        // hide gemsDisplay element
+        // and show the gemsStatsonGameBoard element
+        // or at least that is what is supposed to happen and it works
+        // I just don't understand how
+        if (gemsStatsonGameBoard.classList.contains('hidden') === true) {
+            gemsStatsonGameBoard.classList.toggle('hidden');
+        }
+        if (gemsDisplay.classList.contains('hidden') === false) {
+            gemsDisplay.classList.toggle('hidden');
         }
 
         // these reset the counters on the score panel
