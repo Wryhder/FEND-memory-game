@@ -17,7 +17,7 @@ let openCards = [],
     timerId,
     timerOff = true,
     isGameOver = false,
-    matchedCards = 0
+    matchedCards = 0,
     totalPlayTime = 0,
     totalMoves = 0,
     gemsLeft = 0;
