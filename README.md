@@ -4,6 +4,7 @@
 
 Memory Game is one of several projects built to practice the concepts taught in Udacity's Front-End Nanodegree program and is required to graduate the program.
 It is based on the popular [Concentration game](https://en.wikipedia.org/wiki/Concentration_(game)).
+
 **Head over [here](https://wryhder.github.io/FEND-Memory-Game/) to play.**
 
 ## How to Play
@@ -32,7 +33,6 @@ To run the app locally:
 git clone https://github.com/Wryhder/FEND-Memory-Game.git
 ```
 3. Spin up a local server, or simply open `index.html` in your browser
-
 
 ## Dependencies
 
