@@ -22,6 +22,18 @@ Click the reset button to reset the game at any time.
 
 **Note:** The cards are shuffled on each play to ensure unpredictability.
 
+## Run a Local Copy
+To run the app locally:
+1. Change (or `cd`) into the directory you want it in.
+
+2. Clone the repo
+
+```
+git clone https://github.com/Wryhder/FEND-Memory-Game.git
+```
+3. Spin up a local server, or simply open `index.html` in your browser
+
+
 ## Dependencies
 
 [Font Awesome (v5.3.1)](https://fontawesome.com/)
