@@ -19,7 +19,7 @@ let openCards = [],
     totalPlayTime = 0,
     totalMoves = 0,
     gemsLeft = 0;
- 
+
 
 // Object `chores` contain all handler functions for the game
 const chores = {
@@ -65,7 +65,7 @@ const chores = {
 
         modalReplayButton.addEventListener('click', this.resetGame.bind(chores));
     },
-
+    
     manageGamePlay() {
         const clickTarget = event.target;
 
@@ -100,7 +100,7 @@ const chores = {
         // For a click to be valid:
         // 1. Target needs to be a card with class of "card"
         // 2. Target must not have been previously matched
-        // 3. 
+        // 3. The openCards array must have less than two cards already in it
         // 4. Target must not already be in the openCards array
         return (
             clickTarget.classList.contains('card') &&
