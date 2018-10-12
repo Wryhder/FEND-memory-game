@@ -178,7 +178,7 @@ const chores = {
         // variable is increased by one and displayed
         // on the score panel
         moves++;
-        movesElement = document.querySelector('.moves');
+        const movesElement = document.querySelector('.moves');
         movesElement.innerHTML = `Moves: ${moves}`;
         
         if (isGameOver === true) {
