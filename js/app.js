@@ -279,7 +279,6 @@ const chores = {
             // in background score panel until replay button is clicked
             // The extra check for the resetButton ensures that
             // expected behaviour is retained
-            
             if (event.target === modalReplayButton ||
                 event.target === resetButton) {
 
