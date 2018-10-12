@@ -25,7 +25,7 @@ const chores = {
         const allCardsOnDeck = Array.from(cards);
 
         const shuffledCards = (function shuffle(array) {
-            var currentIndex = array.length, temporaryValue, randomIndex;
+            let currentIndex = array.length, temporaryValue, randomIndex;
 
             while (currentIndex !== 0) {
                 randomIndex = Math.floor(Math.random() * currentIndex);
