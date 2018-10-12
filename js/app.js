@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 // Global variables
 const deck = document.querySelector('.deck'),
