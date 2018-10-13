@@ -204,7 +204,7 @@ const chores = {
         const gemList = document.querySelectorAll('.gems li');
 
         // Checks when a gem should be removed
-        if (moves === 14 || moves === 20 || moves === 30) {
+        if (moves === 14 || moves === 20 || moves === 40) {
             (function hideGem() {
                 for (const gem of gemList) {
                     if (!gem.classList.contains('hidden')) {
