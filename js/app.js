@@ -206,7 +206,7 @@ const chores = {
         // Checks when a gem should be removed
         if (moves === 14 || moves === 20 || moves === 30) {
             (function hideGem() {
-                for (let gem of gemList) {
+                for (const gem of gemList) {
                     if (!gem.classList.contains('hidden')) {
                         gem.classList.toggle('hidden');
                         break;
@@ -221,8 +221,8 @@ const chores = {
             gemsLeft = (function getGemsLeft() {
                 let gemCount = 0;
 
-                for (let gem of gemList) {
-                    if (!gem.classList.contains('.hidden')) {
+                for (const gem of gemList) {
+                    if (!gem.classList.contains('hidden')) {
                         gemCount++;
                     }
                 }
