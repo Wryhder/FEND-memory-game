@@ -216,7 +216,7 @@ const chores = {
         }
 
         if (isGameOver === true) {
-
+            
             // Get the number of gems left
             gemsLeft = (function getGemsLeft() {
                 let gemCount = 0;
@@ -236,9 +236,9 @@ const chores = {
             // which shows the final rating (or gems left)
             // in the same numeric format as the game completion modal
             (function hideGemsDisplayAndShowGemsStatsonGameBoard() {
-            gemsStatsonGameBoard.innerHTML = `Gems: ${gemsLeft}`;
-            gemsDisplay.classList.toggle('hidden');
-            gemsStatsonGameBoard.classList.toggle('hidden');
+                gemsStatsonGameBoard.innerHTML = `Gems: ${gemsLeft}`;
+                gemsDisplay.classList.toggle('hidden');
+                gemsStatsonGameBoard.classList.toggle('hidden');
             })();
 
             // Resets the number of gems when game is over or reset
@@ -347,12 +347,12 @@ const chores = {
         // or at least that is what is supposed to happen and it works
         // I just don't understand how
         (function showGemsDisplayAndHideGemsStatsonGameBoard() {
-        if (gemsStatsonGameBoard.classList.contains('hidden') === true) {
-            gemsStatsonGameBoard.classList.toggle('hidden');
-        }
-        if (gemsDisplay.classList.contains('hidden') === false) {
-            gemsDisplay.classList.toggle('hidden');
-        }
+            if (gemsStatsonGameBoard.classList.contains('hidden') === true) {
+                gemsStatsonGameBoard.classList.toggle('hidden');
+            }
+            if (gemsDisplay.classList.contains('hidden') === false) {
+                gemsDisplay.classList.toggle('hidden');
+            }
         })();
 
         // these reset the counters on the score panel
