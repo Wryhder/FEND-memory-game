@@ -78,8 +78,7 @@ const chores = {
                 timerOff = false;
             }
 
-            // if a click is valid and it is NOT the first of such,
-            // turn its target (the card) face up
+            // if a click is valid, turn its target (the card) face up
             this.toggleClass(clickTarget);
             // add card to the openCards array
             this.addToArray(clickTarget);
