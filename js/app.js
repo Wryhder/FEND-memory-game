@@ -30,7 +30,7 @@ const chores = {
     shuffleDeck() {
         // Global cards variable contains a nodeList;
         // it need to be converted to an array before it is looped over
-        // This is what the Array.from() function achieves.
+        // This is what the Array.from() function achieves
         const allCardsOnDeck = Array.from(cards);
 
         // The IIFE (Immediately Invoked Function Expression), `shuffle`,
@@ -49,7 +49,7 @@ const chores = {
             return array;
         })(allCardsOnDeck);
 
-        // Shuffled cards are appended to the main deck
+        // Appends shuffled cards to the main deck
         for (let card of shuffledCards) {
             deck.appendChild(card);
         }
@@ -230,11 +230,11 @@ const chores = {
                 return gemCount;
             })();
 
-            // hide gemsDisplay element
-            // and show the gemsStatsonGameBoard element
+            // hide element stored in the gemsDisplay variable
+            // and show the element stored in the gemsStatsonGameBoard variable
             // What this actually does is unhide the html element
             // which shows the final rating (or gems left)
-            // in the same format as the game completion modal
+            // in the same numeric format as the game completion modal
             gemsStatsonGameBoard.innerHTML = `Gems: ${gemsLeft}`;
             gemsDisplay.classList.toggle('hidden');
             gemsStatsonGameBoard.classList.toggle('hidden');
@@ -264,7 +264,7 @@ const chores = {
         const timer = document.querySelector('.timer');
 
         // Stops the timer when game is over or reset
-        // and resets the all elements concerned with time 
+        // and resets the all variables concerned with time 
         if (isGameOver === true) {
             (function stopTimer() {
                 clearInterval(timerId);
@@ -272,6 +272,7 @@ const chores = {
 
             timerOff = true;
             time = 0;
+            // get total play time
             totalPlayTime = timer.innerHTML.split(' ')[1];
             
             // When modal is toggled on, keep showing total play time
@@ -339,8 +340,8 @@ const chores = {
             isGameOver = true;
         }
 
-        // hide gemsDisplay element
-        // and show the gemsStatsonGameBoard element
+        // show element stored in the gemsDisplay variable
+        // and hide the element stored in the gemsStatsonGameBoard variable
         // or at least that is what is supposed to happen and it works
         // I just don't understand how
         if (gemsStatsonGameBoard.classList.contains('hidden') === true) {
@@ -356,7 +357,8 @@ const chores = {
         this.handleScoring();
         
         // only show the modal if the modalReplayButton,
-        // and not the resetButton, was clicked
+        // and not the resetButton, was clicked;
+        // resetButton was not created with a <button> tag
         if (event.target.tagName === 'BUTTON') {
             this.toggleModal();
         }
