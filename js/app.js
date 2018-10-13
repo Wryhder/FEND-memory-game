@@ -272,6 +272,7 @@ const chores = {
                 clearInterval(timerId);
             })();
 
+            // reset variables concerned with time
             timerOff = true;
             time = 0;
             // get total play time
