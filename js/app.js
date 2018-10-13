@@ -27,7 +27,7 @@ let openCards = [],
 const chores = {
 
     // shuffles card deck
-    shuffleDeck() {
+    setUpDeck() {
         // Global cards variable contains a nodeList;
         // it need to be converted to an array before it is looped over
         // This is what the Array.from() function achieves
@@ -364,7 +364,7 @@ const chores = {
         }
 
         // shuffle the deck
-        this.shuffleDeck();
+        this.setUpDeck();
 
         // reset variable
         isGameOver = false;
@@ -379,6 +379,6 @@ const chores = {
 }
 
 // on each new page load, shuffle the deck, set up appropriate listeners
-chores.shuffleDeck();
+chores.setUpDeck();
 chores.setUpListeners();
 
