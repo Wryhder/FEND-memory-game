@@ -283,7 +283,6 @@ const chores = {
             // expected behaviour is retained
             if (event.target === modalReplayButton ||
                 event.target === resetButton) {
-
                 timer.innerHTML = `Time: 00:00`;
             }
 
