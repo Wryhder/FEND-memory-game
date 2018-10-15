@@ -45,6 +45,7 @@ Students from the program may use this repo's code to get an idea of how to appr
 Otherwise, fork and modify as you please.
 
 ## Todo
+- Implement automated integration testing
 - Add animation effects to matched and unmatched cards
 - Save game state using local storage
 - Optimize game
