@@ -51,3 +51,4 @@ Otherwise, fork and modify as you please.
 - Optimize game
 - Make game accessible (keyboard shortcuts, ...)
 - Add a service worker
+- Improve README
