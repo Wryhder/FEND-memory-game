@@ -50,3 +50,4 @@ Otherwise, fork and modify as you please.
 - Save game state using local storage
 - Optimize game
 - Make game accessible (keyboard shortcuts, ...)
+- Add a service worker
