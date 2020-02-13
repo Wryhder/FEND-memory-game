@@ -43,10 +43,3 @@ git clone https://github.com/Wryhder/FEND-Memory-Game.git
 Students from the program may use this repo's code to get an idea of how to approach their own project. Please do NOT copy/paste.
 
 Otherwise, fork and modify as you please.
-
-## Todo
-- Implement automated integration testing
-- Add animation effects to matched and unmatched cards
-- Save game state using local storage
-- Optimize game
-- Make game accessible (keyboard shortcuts, ...)
