@@ -38,8 +38,3 @@ git clone https://github.com/Wryhder/FEND-Memory-Game.git
 
 [Font Awesome (v5.3.1)](https://fontawesome.com/)
 
-## Usage
-
-Students from the program may use this repo's code to get an idea of how to approach their own project. Please do NOT copy/paste.
-
-Otherwise, fork and modify as you please.
