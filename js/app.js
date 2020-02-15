@@ -116,6 +116,20 @@ const chores = {
         card.classList.toggle('open');
         card.classList.toggle('show');
     },
+    
+    // manage addition and removal of animation classes on cards in play
+    animateCSS(element, animationName, callback) {
+        element.classList.add('animated', animationName)
+
+        function handleAnimationEnd() {
+            element.classList.remove('animated', animationName)
+            element.removeEventListener('animationend', handleAnimationEnd)
+
+            if (typeof callback === 'function') callback()
+        }
+
+        element.addEventListener('animationend', handleAnimationEnd)
+    },
 
     // add a card to the openCards array
     addToArray(card) {
@@ -132,9 +146,16 @@ const chores = {
     checkForMatch() {
         if (openCards[0].firstElementChild.className ===
             openCards[1].firstElementChild.className) {
-            this.leaveMatchedCardsOpen();
-            matchedCards++;
-            this.emptyArray();
+
+            openCards.forEach(card => {
+                // animate the matched cards using the 'heartBeat' class
+                this.animateCSS(card, 'heartBeat', () => {
+                    // After animation ends...
+                    this.leaveMatchedCardsOpen();
+                    matchedCards++;
+                    this.emptyArray();
+                })
+            });
 
             if (matchedCards === totalCardPairs) {
                 (function gameOver() {
@@ -151,12 +172,14 @@ const chores = {
                 })();
             }
         } else {
-            // turns unmatched cards back down
-            // but not before player can see they were not a match
-            setTimeout(() => {
-                this.closeUnmatchedCards();
-                this.emptyArray();
-            }, 1000);
+            openCards.forEach(card => {
+                // animate the matched cards using the 'jello' class
+                this.animateCSS(card, 'jello', () => {
+                    // After animation ends...
+                    this.closeUnmatchedCards();
+                    this.emptyArray();
+                })
+            });
         }
     },
 
