@@ -118,17 +118,16 @@ const chores = {
     },
     
     // manage addition and removal of animation classes on cards in play
-    animateCSS(element, animationName, callback) {
-        element.classList.add('animated', animationName)
+    animateCSS(card, animationName, callback) {
+        card.classList.add('animated', animationName);
 
         function handleAnimationEnd() {
-            element.classList.remove('animated', animationName)
-            element.removeEventListener('animationend', handleAnimationEnd)
+            card.classList.remove('animated', animationName);
+            card.removeEventListener('animationend', handleAnimationEnd);
 
             if (typeof callback === 'function') callback()
         }
-
-        element.addEventListener('animationend', handleAnimationEnd)
+        card.addEventListener('animationend', handleAnimationEnd);
     },
 
     // add a card to the openCards array
@@ -147,15 +146,12 @@ const chores = {
         if (openCards[0].firstElementChild.className ===
             openCards[1].firstElementChild.className) {
 
-            openCards.forEach(card => {
-                // animate the matched cards using the 'heartBeat' class
-                this.animateCSS(card, 'heartBeat', () => {
-                    // After animation ends...
-                    this.leaveMatchedCardsOpen();
-                    matchedCards++;
-                    this.emptyArray();
-                })
-            });
+            // animate the matched cards using the 'heartBeat' class 
+            openCards.forEach((card) => this.animateCSS(card, 'heartBeat'));
+
+            this.leaveMatchedCardsOpen();
+            matchedCards++;
+            this.emptyArray();
 
             if (matchedCards === totalCardPairs) {
                 (function gameOver() {
@@ -172,14 +168,15 @@ const chores = {
                 })();
             }
         } else {
-            openCards.forEach(card => {
-                // animate the matched cards using the 'jello' class
-                this.animateCSS(card, 'jello', () => {
-                    // After animation ends...
-                    this.closeUnmatchedCards();
-                    this.emptyArray();
-                })
-            });
+            // animate unmatched cards using the 'jello' class
+            openCards.forEach((card) => this.animateCSS(card, 'jello'));
+            
+            // turns unmatched cards back down
+            // but not before player can see they were not a match
+            setTimeout(() => {
+                this.closeUnmatchedCards();
+                this.emptyArray();
+            }, 800);
         }
     },
 
